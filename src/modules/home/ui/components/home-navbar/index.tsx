@@ -7,7 +7,8 @@ export const HomeNavbar = () => {
     return (
         <nav>
             <div className="flex items-center flex-shrink-0 my-2 mx-5">
-                <SidebarTrigger />
+                <SidebarTrigger className="z-[10000]" />
+
                 <Link href="/">
                     <div className="px-3 flex items-center gap-1">
                         <Image src="/logo.svg" alt="Logo" width={32} height={32} />
