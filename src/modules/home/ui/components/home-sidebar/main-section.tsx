@@ -36,7 +36,7 @@ export const MainSection = () => {
                         <SidebarMenuItem key={item.title}>
                             <SidebarMenuButton tooltip={item.title} asChild isActive={false}>
                                 <Link className="flex items-center gap-4" href={item.url}>
-                                    <item.icon />gi
+                                    <item.icon />
                                     <span className="text-sm">{item.title}</span>
                                 </Link>
                             </SidebarMenuButton>
