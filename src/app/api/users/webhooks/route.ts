@@ -112,21 +112,3 @@ export async function POST(req: Request) {
     // ✅ Return a success response
     return new Response('Webhook received', { status: 200 })
 }
-
-export async function GET(req: Request) {
-    console.log('Webhook GET hit');
-
-    return new Response(
-        JSON.stringify({
-            message: 'Webhook route is working',
-            method: 'GET',
-            timestamp: new Date().toISOString(),
-        }),
-        {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-    );
-}
