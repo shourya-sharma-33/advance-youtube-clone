@@ -7,6 +7,8 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useAuth } from "@clerk/clerk-react";
+import { useClerk } from "@clerk/nextjs";
 import { FlameIcon, History, HistoryIcon, HomeIcon, ListVideoIcon, PlaySquareIcon, ThumbsUpIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -15,20 +17,26 @@ const items = [
         title: "History",
         url: "/playlist/history",
         icon: HistoryIcon,
+        auth : true
     },
     {
         title: "Liked",
         url: "/playlist/liked",
         icon: ThumbsUpIcon,
+        auth : true
     },
     {
         title: "All Playlists",
         url: "/playlists",
         icon: ListVideoIcon,
+        auth : true
     },
 ];
 
 export const PersonalSection = () => {
+    const clerk = useClerk();
+    const { isSignedIn } = useAuth();
+
     return (
         <SidebarGroup>
             <SidebarGroupLabel>You</SidebarGroupLabel>
@@ -36,7 +44,14 @@ export const PersonalSection = () => {
                     <SidebarMenu>
                         {items.map((item) => (
                             <SidebarMenuItem key={item.title}>
-                                <SidebarMenuButton tooltip={item.title} asChild isActive={false}>
+                                <SidebarMenuButton tooltip={item.title} asChild isActive={false}
+                                    onClick={(e) => {
+                                        if (!isSignedIn && item.auth) {
+                                            e.preventDefault();
+                                            return clerk.openSignIn();
+                                        }
+                                    }}
+                                >
                                     <Link className="flex items-center gap-4" href={item.url}>
                                         <item.icon />
                                         <span className="text-sm">{item.title}</span>
