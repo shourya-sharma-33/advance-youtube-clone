@@ -1,13 +1,8 @@
-"use client";
-
-import { trpc } from "@/trpc/client";
-export default function Home() {
-  const {data} = trpc.hello.useQuery({
+import { trpc } from "@/trpc/server";
+import { PageClient } from "./client";
+export default async function Home() {
+   trpc.hello.prefetch({
     text : "meow"
   });
-  return (
-    <div>
-      clienr comp says {data?.greeting}
-    </div>
-  );
+  return <PageClient/>;
 }
