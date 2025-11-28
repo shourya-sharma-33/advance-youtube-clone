@@ -1,7 +1,13 @@
-import Image from "next/image";
+"use client";
 
+import { trpc } from "@/trpc/client";
 export default function Home() {
+  const {data} = trpc.hello.useQuery({
+    text : "meow"
+  });
   return (
-    <div></div>
+    <div>
+      clienr comp says {data?.greeting}
+    </div>
   );
 }

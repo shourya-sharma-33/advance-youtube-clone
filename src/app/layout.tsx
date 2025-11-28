@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { TRPCProvider } from "@/trpc/client";
 import {
     ClerkProvider,
     SignInButton,
@@ -27,7 +28,11 @@ export default function RootLayout({
         <ClerkProvider>
         <html lang="en">
             <body className={outfit.className}>
-                {children}
+                <TRPCProvider>
+
+                        {children}
+
+                </TRPCProvider>
             </body>
         </html>
         </ClerkProvider>
