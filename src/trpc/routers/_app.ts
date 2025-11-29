@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { baseProcedure, createTRPCRouter } from '../init';
+import { auth } from '@clerk/nextjs/server';
 export const appRouter = createTRPCRouter({
     hello: baseProcedure
         .input(
@@ -7,7 +8,9 @@ export const appRouter = createTRPCRouter({
                 text: z.string(),
             }),
         )
-        .query((opts) => {
+        .query(async (opts) => {
+            const {userId} = await auth();
+            console.log({userId})
             return {
                 greeting: `hello ${opts.input.text}`,
             };
