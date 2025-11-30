@@ -38,9 +38,10 @@ const CategoriesSectionSuspense = ({ categoryId }: CategoriesSectionProps) => {
         } else {
             url.searchParams.delete("categoryId");
         }
-
+  
         router.push(url.toString());
     };
 
     return <FilterCarousel onSelect={onSelect} value={categoryId} data={data} />;
 };
+ 
