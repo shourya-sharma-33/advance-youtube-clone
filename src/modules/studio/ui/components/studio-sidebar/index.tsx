@@ -5,7 +5,7 @@ import { Separator } from "@radix-ui/react-separator";
 import Image from "next/image";
 import Link from "next/link";
 
-export const HomeSidebar = () => {
+export const StudioSidebar = () => {
     return (
         
         <Sidebar className="pt-16 z-40 border-none" collapsible="icon">
