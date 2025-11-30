@@ -5,8 +5,8 @@ import Image from "next/image";
 import { AuthButton } from "@/modules/auth/ui/components/auth-button";
 export const HomeNavbar = () => {
     return (
-        <nav className="fixed w-full z-[10000] bg-white">
-            <div className="flex items-center z-[10000] flex-shrink-0 my-2 mx-5">
+        <nav className="fixed w-full z-[10000] bg-white py-5">
+            <div className="flex items-center z-[10000] flex-shrink-0 mx-5">
                 <SidebarTrigger className="" />
 
                 <Link href="/">
