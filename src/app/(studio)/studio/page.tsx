@@ -4,7 +4,9 @@ import {
 } from "@/trpc/server";
 
 const Page = async () => {
-  void trpc.studio.getMany.prefetchInfinite();
+  void trpc.studio.getMany.prefetchInfinite({
+    limit: 5
+  });
 
   return (
     <HydrateClient>
